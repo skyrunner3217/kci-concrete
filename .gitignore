@@ -1,0 +1,18 @@
+# 대용량 데이터 (21k+ 파일, 170MB)
+meta/
+papers/
+logs/
+
+# 임베딩 캐시 (140MB)
+network/embeddings_cache.json
+
+# Python 가상환경
+.venv/
+
+# macOS
+.DS_Store
+
+# 임시 파일
+progress.json
+*.pyc
+__pycache__/
