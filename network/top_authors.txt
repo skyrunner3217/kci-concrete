@@ -5,88 +5,88 @@
 [논문 수 Top 50]
   순위  저자(한국어)       저자(영문)                       논문수    공저자수  기간
 ----------------------------------------------------------------------
-   1  윤현도           Yun, Hyun Do                 565     274  1991~2026
-   2  한천구           Han, Cheon Goo               446     350  1990~2024
-   3  김규용           Kim, Gyu Yong                396     284  1993~2026
-   4  박홍근           Park, Hong Gun               331     176  1995~2026
-   5  김영진           Kim, Young Jin               329     234  1989~2026
-   6  한민철           Han, Min Cheol               290     254  1996~2026
-   7  양근혁           Yang, Keun Hyeok             275     136  1999~2026
-   8  홍성걸           Hong, Sung Gul               258     122  1997~2025
-   9  김강수           Kim, Kang Su                 242     132  1995~2026
-  10  김진근           Kim, Jin Keun                232     163  1989~2020
-  11  이정윤           Lee, Jung-Yoon               230     137  2000~2026
-  12  윤영수           Yoon, Young Soo              227     166  1994~2026
-  13  조재열           Cho, Jae-Yeol                226      98  1994~2026
-  14  김무한           Kim, Moo Han                 222     190  1989~2017
-  15  최창식           Choi, Chang Sik              217     133  1989~2026
-  16  박완신           Park, Wan Shin               217     119  1999~2026
-  17  강현구           Kang, Thomas H.-K.           216     104  2006~2026
-  18  김장호           Kim, Jang Jay Ho             213     172  2000~2026
-  19  김성수           Kim, Seong Soo               201     190  1989~2026
-  20  고경택           Koh, Kyung Taek              199     106  1999~2025
-  21  김선우           Kim, Sun Woo                 194     111  1997~2026
-  22  이승훈           Lee, Seung Hoon              191     198  1990~2026
-  23  김진만           Kim, Jin Man                 190     152  1992~2026
-  24  오병환                                        188     149  1989~2006
-  25  이재훈           Lee, Jae Hoon                184     174  1994~2025
-  26  정용            Jeong, Yong                  179     178  1991~2024
-  27  최경규           Choi, Kyoung-Kyu             178      96  2000~2026
-  28  천성철           Chun, Sung Chul              178      90  1999~2026
-  29  김성욱           Kim, Sung Wook               173     121  1991~2026
-  30  서수연           Seo, Soo Yeon                171     185  1990~2026
-  31  정상진                                        169     164  1992~2014
-  32  박영환           Park, Young Hwan             165      86  2003~2021
-  33  김윤용           Kim, Yun Yong                164     103  1992~2025
-  34  류금성           Ryu, Gum Sung                164      86  1999~2025
-  35  정영수           CHUNG, Young-Soo             164     135  1990~2015
-  36  유영찬           You, Young Chan              159     108  1990~2025
-  37  이장화           Lee, Jang Hwa                157      89  1989~2020
-  38  이기학           Lee, Kihak                   152      90  2004~2025
-  39  윤경구           Yun, Kyong Ku                152      99  1996~2025
-  40  최연왕           Choi, Yun Wang               151     118  1990~2025
-  41  소양섭                                        150     102  1990~2012
-  42  심종성           Sim, Jongsung                150     120  1989~2017
-  43  김병석           Kim, Byung Suk               149      82  1998~2020
-  44  이상수           Lee, Sang Soo                149     140  1993~2025
-  45  이광명           Lee, Kwang Myong             148     161  1995~2024
-  46  김우            Kim, Woo                     146      87  1990~2024
-  47  남정수           Nam, Jeong Soo               146     106  1992~2026
-  48  박철우           Park, Cheol Woo              145     139  1992~2026
-  49  김화중           Kim, Wha Jung                144     132  1991~2024
-  50  김길희           Kim, Kil-Hee                 142     115  2005~2026
+   1  윤현도           Yun, Hyun Do                 711     317  1991~2026
+   2  한천구           Han, Cheon Goo               512     357  1990~2024
+   3  김규용           Kim, Gyu Yong                455     295  1993~2026
+   4  김영진           Kim, Young Jin               366     278  1989~2026
+   5  한민철           Han, Min Cheol               360     260  1996~2026
+   6  양근혁           Yang, Keun Hyeok             359     161  1999~2026
+   7  박홍근           Park, Hong Gun               344     184  1995~2026
+   8  김윤용           Kim, Yun Yong                301     143  1992~2026
+   9  김강수           Kim, Kang Su                 289     141  1995~2026
+  10  박완신           Park, Wan Shin               284     132  1999~2026
+  11  최창식           Choi, Chang Sik              264     140  1989~2026
+  12  홍성걸           Hong, Sung Gul               259     125  1997~2025
+  13  이강석           Lee, Kang Seok               243      95  2001~2026
+  14  이정윤           Lee, Jung-Yoon               238     139  2000~2026
+  15  김진근           Kim, Jin Keun                233     163  1989~2020
+  16  윤영수           Yoon, Young Soo              232     168  1994~2026
+  17  김선우           Kim, Sun Woo                 230     117  1997~2026
+  18  강현구           Kang, Thomas H.-K.           230     105  2006~2026
+  19  조재열           Cho, Jae-Yeol                228     100  1994~2026
+  20  김무한           Kim, Moo Han                 224     190  1989~2017
+  21  김장호           Kim, Jang Jay Ho             224     173  2000~2026
+  22  김성수           Kim, Seong Soo               221     199  1989~2026
+  23  양은익           Yang, Eun Ik                 220     112  1991~2026
+  24  고경택           Koh, Kyung Taek              215     108  1999~2025
+  25  김성욱           Kim, Sung Wook               208     138  1991~2026
+  26  장영일           Jang, Young Il               207      91  1992~2026
+  27  서수연           Seo, Soo Yeon                207     195  1990~2026
+  28  김진만           Kim, Jin Man                 205     181  1992~2026
+  29  김우석           Kim, WooSeok                 204     103  1999~2026
+  30  최경규           Choi, Kyoung-Kyu             203     101  2000~2026
+  31  이재훈           Lee, Jae Hoon                199     196  1994~2026
+  32  유영찬           You, Young Chan              197     120  1990~2025
+  33  천성철           Chun, Sung Chul              197     107  1999~2026
+  34  정영수           CHUNG, Young-Soo             197     177  1990~2023
+  35  김길희           Kim, Kil-Hee                 193     119  2005~2026
+  36  이승훈           Lee, Seung Hoon              192     201  1990~2026
+  37  오병환                                        188     149  1989~2006
+  38  최연왕           Choi, Yun Wang               186     132  1990~2025
+  39  정주성           Jung, Ju Seong               185      56  2012~2026
+  40  이병재           Lee, Byung Jae               184     105  2003~2026
+  41  이한승           Lee, Han Seung               184     165  1998~2021
+  42  류금성           Ryu, Gum Sung                183      91  1999~2025
+  43  박선규           Park, Sun Gyu                182     177  1996~2026
+  44  정용            Jeong, Yong                  181     179  1991~2024
+  45  박철우           Park, Cheol Woo              178     156  1992~2026
+  46  박영환           Park, Young Hwan             178      90  2003~2021
+  47  남정수           Nam, Jeong Soo               173     110  1992~2026
+  48  이장화           Lee, Jang Hwa                172      92  1989~2020
+  49  박정준           Park, Jung Jun               171     118  1998~2026
+  50  정상진                                        169     164  1992~2014
 
 
 [매개 중심성(Betweenness) Top 30]
   순위  저자(한국어)       저자(영문)                            매개중심성    논문수
 ----------------------------------------------------------------------
-   1  김영진           Kim, Young Jin                 0.029179    329
-   2  이승훈           Lee, Seung Hoon                0.024511    191
-   3  박선규           Park, Sun Gyu                  0.019642    135
-   4  윤현도           Yun, Hyun Do                   0.018828    565
-   5  이재훈           Lee, Jae Hoon                  0.018463    184
-   6  김진근           Kim, Jin Keun                  0.017931    232
-   7  한천구           Han, Cheon Goo                 0.017592    446
-   8  김성수           Kim, Seong Soo                 0.017395    201
-   9  김규용           Kim, Gyu Yong                  0.016056    396
-  10  이광명           Lee, Kwang Myong               0.015358    148
-  11  박홍근           Park, Hong Gun                 0.014701    331
-  12  최세진           Choi, Se Jin                   0.013972    116
-  13  김동현           Kim, Dong Hyun                 0.013657     62
-  14  홍성걸           Hong, Sung Gul                 0.012634    258
-  15  김장호           Kim, Jang Jay Ho               0.012402    213
-  16  이태규           Lee, Tae Gyu                   0.012099     76
-  17  송하원                                          0.011981    119
-  18  이리형                                          0.011978    108
-  19  이한승           Lee, Han Seung                 0.011924    122
-  20  박종호           Park, Jong Ho                  0.011912     97
-  21  정란            Chung, Lan                     0.011692    110
-  22  최창식           Choi, Chang Sik                0.011682    217
-  23  서수연           Seo, Soo Yeon                  0.011486    171
-  24  오병환                                          0.011477    188
-  25  이상호           Lee, Sangho                    0.011342     69
-  26  이기학           Lee, Kihak                     0.011096    152
-  27  천영수           Chun, Young Soo                0.010888     78
-  28  김동석           Kim, Dong Seok                 0.010722     80
-  29  정용            Jeong, Yong                    0.010714    179
-  30  한민철           Han, Min Cheol                 0.010559    290
+   1  김영진           Kim, Young Jin                 0.031654    366
+   2  윤현도           Yun, Hyun Do                   0.020962    711
+   3  이재훈           Lee, Jae Hoon                  0.018142    199
+   4  이승훈           Lee, Seung Hoon                0.017661    192
+   5  김동현           Kim, Dong Hyun                 0.015074     92
+   6  김성수           Kim, Seong Soo                 0.015068    221
+   7  한천구           Han, Cheon Goo                 0.014495    512
+   8  김진근           Kim, Jin Keun                  0.014012    233
+   9  박선규           Park, Sun Gyu                  0.012691    182
+  10  박홍근           Park, Hong Gun                 0.012582    344
+  11  이한승           Lee, Han Seung                 0.012255    184
+  12  김규용           Kim, Gyu Yong                  0.012090    455
+  13  이광명           Lee, Kwang Myong               0.011421    151
+  14  박종호           Park, Jong Ho                  0.011328    115
+  15  이상호           Lee, Sangho                    0.011054     89
+  16  최세진           Choi, Se Jin                   0.010954    126
+  17  양근혁           Yang, Keun Hyeok               0.010770    359
+  18  김동석           Kim, Dong Seok                 0.010511     87
+  19  정영수           CHUNG, Young-Soo               0.010487    197
+  20  김진만           Kim, Jin Man                   0.010441    205
+  21  홍성걸           Hong, Sung Gul                 0.010274    259
+  22  이승재           Lee, Seung-Jae                 0.010156     98
+  23  김경민           Kim, Kyoung-Min                0.009746    124
+  24  서수연           Seo, Soo Yeon                  0.009421    207
+  25  천영수           Chun, Young Soo                0.008950     97
+  26  김화중           Kim, Wha Jung                  0.008945    147
+  27  신성우                                          0.008839    100
+  28  김장호           Kim, Jang Jay Ho               0.008807    224
+  29  박성우           Park, Sungwoo                  0.008754     62
+  30  김재환           Kim, Jae Hwan                  0.008613    131

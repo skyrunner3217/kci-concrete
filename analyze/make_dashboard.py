@@ -278,14 +278,23 @@ a.pi:hover,div.pi:hover{border-color:var(--ac);background:rgba(91,141,238,.06)}
 .tc-hint{font-size:11px;color:var(--t3)}
 /* 성장률 랭킹 */
 .rank-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.rank-item{display:flex;align-items:center;gap:10px;padding:7px 10px;
-           background:var(--s2);border:1px solid var(--bd);border-radius:var(--rs);cursor:pointer}
+.rank-item{display:flex;align-items:center;gap:8px;padding:7px 10px;
+           background:var(--s2);border:1px solid var(--bd);border-radius:var(--rs);
+           cursor:pointer;min-width:0}
 .rank-item:hover{border-color:var(--ac)}
-.rank-no{font-size:12px;color:var(--t3);width:16px;text-align:center}
-.rank-name{flex:1;font-size:13px;font-weight:500}
-.rank-bar-wrap{width:60px;height:5px;background:var(--s3);border-radius:3px;flex-shrink:0}
+.rank-no{font-size:12px;color:var(--t3);width:18px;text-align:center;flex-shrink:0}
+.rank-name{flex:1;font-size:13px;font-weight:500;
+           white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.rank-bar-wrap{width:72px;height:5px;background:var(--s3);border-radius:3px;flex-shrink:0}
 .rank-bar{height:5px;border-radius:3px}
 .rank-val{font-size:12px;font-weight:700;width:42px;text-align:right;flex-shrink:0}
+/* 저자 클릭 링크 */
+.pca-link{cursor:pointer;transition:color var(--tr);border-radius:3px;padding:0 1px}
+.pca-link:hover{color:var(--ac);text-decoration:underline}
+.pca-sep{color:var(--t3)}
+/* 로컬 네트워크 모드 토글 */
+#local-mode-tog{display:flex;gap:5px;margin-bottom:5px;align-items:center}
+#local-mode-tog .seg-btn{padding:2px 8px;font-size:11px}
 /* Heatmap */
 #hmap-wrap{overflow-x:auto;padding-bottom:4px}
 .hmap-cell{border-radius:2px;cursor:pointer;flex-shrink:0;transition:transform .1s}
@@ -540,22 +549,25 @@ td.num{color:var(--t2);text-align:right}
         '  </div>'
         # 본문 컨텐츠
         '  <div class="trend-content">'
-        # 1. 연도별 발행량 + 급성장/감소 랭킹 나란히 (2:1)
-        '    <div style="display:grid;grid-template-columns:1fr auto;gap:16px;align-items:stretch">'
-        '      <div class="card" style="display:flex;flex-direction:column">'
-        '        <div class="card-hd"><h3>📊 연도별 논문 발행 현황</h3></div>'
-        '        <div class="kpi-strip" id="yr-kpis"></div>'
-        '        <div class="cw" style="flex:1;min-height:180px"><canvas id="cyr"></canvas></div>'
-        '      </div>'
-        '      <div style="display:flex;flex-direction:column;gap:16px;min-width:320px">'
-        '        <div class="card" style="flex:1">'
+        # 1. 연도별 발행량 (풀폭)
+        '    <div class="card" style="display:flex;flex-direction:column">'
+        '      <div class="card-hd"><h3>📊 연도별 논문 발행 현황</h3></div>'
+        '      <div class="kpi-strip" id="yr-kpis"></div>'
+        '      <div class="cw" style="flex:1;min-height:200px"><canvas id="cyr"></canvas></div>'
+        '    </div>'
+        # 1b. 급성장 / 감소 (하단 2열, rank-grid 클래스 제거 → 단일 열 리스트)
+        '    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">'
+        '      <div class="card">'
+        '        <div class="card-hd" style="margin-bottom:10px">'
         '          <h3>🚀 최근 5년 급성장 주제</h3>'
-        '          <div class="rank-grid" id="rank-rise"></div>'
         '        </div>'
-        '        <div class="card" style="flex:1">'
+        '        <div id="rank-rise" style="display:flex;flex-direction:column;gap:6px"></div>'
+        '      </div>'
+        '      <div class="card">'
+        '        <div class="card-hd" style="margin-bottom:10px">'
         '          <h3>📉 최근 5년 감소 주제</h3>'
-        '          <div class="rank-grid" id="rank-fall"></div>'
         '        </div>'
+        '        <div id="rank-fall" style="display:flex;flex-direction:column;gap:6px"></div>'
         '      </div>'
         '    </div>'
         # 2. 히트맵(좌) + 주제 트렌드(우) 나란히, 높이 통일
@@ -966,24 +978,58 @@ function openDrawer(n){
   document.getElementById('drawer').classList.add('open');
   renderLocalGraph(n.id);
 }
+let localMode='star';
+function setLocalMode(mode){
+  localMode=mode;
+  document.querySelectorAll('#local-seg .seg-btn').forEach(b=>{
+    b.classList.toggle('on',b.dataset.v===mode);
+  });
+  if(window._localCenter)renderLocalGraph(window._localCenter);
+}
 function renderLocalGraph(centerId){
+  window._localCenter=centerId;
   const svgEl=document.getElementById('local-svg');
   if(!svgEl)return;
-  // 기존 내용 제거
   while(svgEl.firstChild)svgEl.removeChild(svgEl.firstChild);
+  // 토글 버튼 (최초 1회 생성)
+  const lgEl=document.getElementById('local-graph');
+  if(lgEl&&!document.getElementById('local-mode-tog')){
+    const tog=document.createElement('div');
+    tog.id='local-mode-tog';
+    tog.innerHTML=
+      '<span style="font-size:10px;color:var(--t3)">연결:</span>'+
+      '<div class="seg" id="local-seg">'+
+      '<div class="seg-btn on" data-v="star" onclick="setLocalMode(\'star\')">직접</div>'+
+      '<div class="seg-btn" data-v="mesh" onclick="setLocalMode(\'mesh\')">전체</div>'+
+      '</div>';
+    lgEl.insertBefore(tog,svgEl);
+  }
   const W=292,H=160;
-  const neighbors=(ADJ.get(centerId)||[]).slice().sort((a,b)=>b.w-a.w).slice(0,14);
+  const neighbors=(ADJ.get(centerId)||[]).slice().sort((a,b)=>b.w-a.w).slice(0,12);
   if(!neighbors.length)return;
+  const neighborIds=new Set(neighbors.map(n=>n.id));
+  const nodeData=[{id:centerId,r:12,center:true},
+    ...neighbors.map(n=>({id:n.id,r:Math.min(4+n.w*.5,9),center:false,w:n.w}))];
+  // star 링크
+  const starLinks=neighbors.map(n=>({source:centerId,target:n.id,w:n.w,cross:false}));
+  // mesh 교차 링크 (이웃 ↔ 이웃, id1<id2 중복방지)
+  const crossLinks=[];
+  if(localMode==='mesh'){
+    const nbArr=neighbors.map(n=>n.id);
+    for(let i=0;i<nbArr.length;i++){
+      for(let j=i+1;j<nbArr.length;j++){
+        const a=nbArr[i],b=nbArr[j];
+        const conn=(ADJ.get(a)||[]).find(x=>x.id===b);
+        if(conn)crossLinks.push({source:a,target:b,w:conn.w,cross:true});
+      }
+    }
+  }
+  const linkData=[...starLinks,...crossLinks];
   const NS=d3.select(svgEl);
-  const nodeData=[{id:centerId,r:12,center:true},...neighbors.map(n=>({id:n.id,r:Math.min(4+n.w*.5,9),center:false,w:n.w}))];
-  const linkData=neighbors.map(n=>({source:centerId,target:n.id,w:n.w}));
-  const sim=d3.forceSimulation(nodeData)
-    .force('link',d3.forceLink(linkData).id(d=>d.id).distance(52))
-    .force('charge',d3.forceManyBody().strength(-90))
-    .force('center',d3.forceCenter(W/2,H/2))
-    .force('collide',d3.forceCollide(d=>d.r+4));
   const link=NS.append('g').selectAll('line').data(linkData).join('line')
-    .attr('stroke','#252d48').attr('stroke-width',d=>Math.min(d.w*.4+.8,3));
+    .attr('stroke',d=>d.cross?'#3a4a6e':'#252d48')
+    .attr('stroke-width',d=>d.cross?1:Math.min(d.w*.4+.8,3))
+    .attr('stroke-dasharray',d=>d.cross?'3,3':null);
   const node=NS.append('g').selectAll('circle').data(nodeData).join('circle')
     .attr('r',d=>d.r)
     .attr('fill',d=>d.center?'#5b8dee':nc(NM[d.id]?.paper_count||1))
@@ -996,6 +1042,11 @@ function renderLocalGraph(centerId){
     .attr('text-anchor','middle').attr('fill',d=>d.center?'#e2e8f8':'#7c89ae')
     .attr('font-size',d=>d.center?10:9).attr('pointer-events','none')
     .attr('dy',d=>d.r+11);
+  const sim=d3.forceSimulation(nodeData)
+    .force('link',d3.forceLink(linkData).id(d=>d.id).distance(d=>d.cross?42:52))
+    .force('charge',d3.forceManyBody().strength(localMode==='mesh'?-110:-90))
+    .force('center',d3.forceCenter(W/2,H/2))
+    .force('collide',d3.forceCollide(d=>d.r+4));
   sim.on('tick',()=>{
     const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
     link.attr('x1',d=>clamp(d.source.x,0,W)).attr('y1',d=>clamp(d.source.y,0,H))
@@ -1003,7 +1054,7 @@ function renderLocalGraph(centerId){
     node.attr('cx',d=>clamp(d.x,d.r,W-d.r)).attr('cy',d=>clamp(d.y,d.r,H-d.r));
     lbl.attr('x',d=>clamp(d.x,d.r,W-d.r)).attr('y',d=>clamp(d.y,d.r,H-d.r));
   });
-  setTimeout(()=>sim.stop(),2500);
+  setTimeout(()=>sim.stop(),localMode==='mesh'?3200:2500);
 }
 function closeDrawer(){document.getElementById('drawer').classList.remove('open');selId=null;draw();}
 function selectById(name){
@@ -1451,6 +1502,7 @@ function doSearch(){
   let paperHtml='';
   if(authorHtml)paperHtml=`<div class="sec-header" style="margin-top:12px">📄 논문 (${total}건${total>300?' · 상위 300':''})</div>`;
   paperHtml+=disp.map(p=>{
+    const authSpans=(p.a||[]).filter(a=>a.n).map(a=>`<span class="pca-link" data-author="${esc(a.n)}" onclick="event.stopPropagation();event.preventDefault();goToAuthor(this.dataset.author)">${hl(a.n,q)}</span>`).join('<span class="pca-sep">, </span>');
     const auth=(p.a||[]).map(a=>a.n||'').filter(Boolean).join(', ');
     const tag=p.url?`a href="${p.url}" target="_blank" rel="noopener"`:'div';
     const ptags=getPaperTopics(p).slice(0,3);
@@ -1464,7 +1516,7 @@ function doSearch(){
         <span class="badge ${p.src==='journal'?'bj':(p.soc==='KSMI'?'bk':'bc')}">${p.src==='journal'?'학회지':'학술대회'}${p.soc==='KSMI'?' · KSMI':''}</span>
         <span>${p.y}년${p.m?' '+p.m+'월':''}</span>
         ${p.vol?`<span>Vol.${p.vol}${p.iss?' No.'+p.iss:''}</span>`:''}
-        ${auth?`<span class="pca">${hl(auth,q)}</span>`:''}
+        ${authSpans?`<span class="pca">${authSpans}</span>`:''}
         ${ptags.map(t=>`<span class="pctag">${t}</span>`).join('')}
         ${ci?`<span class="pcai" style="color:${ciCol};border-color:${ciCol}44;background:${ciCol}11" title="${ci.description||''}" onclick="event.preventDefault();toggleACTag(${ci.id},'${ciCol}')">⬡ ${ci.label_ko}</span>`:''}
         ${p.url?`<span style="color:var(--ac);margin-left:auto;font-size:11px">↗</span>`:''}</div>
