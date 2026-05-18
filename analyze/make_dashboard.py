@@ -581,7 +581,7 @@ td.num{color:var(--t2);text-align:right}
         '          </div>'
         '        </div>'
         '        <div class="topic-toggles" id="topic-toggles"></div>'
-        '        <div style="flex:1;min-height:200px;position:relative"><canvas id="ctopic" style="width:100%;height:100%"></canvas></div>'
+        '        <div style="height:360px;position:relative"><canvas id="ctopic" style="width:100%;height:100%"></canvas></div>'
         '        <p style="font-size:11px;color:var(--t3);margin-top:6px">※ 제목 키워드 기반 자동 분류 · 참고용</p>'
         '      </div>'
         # 히트맵 (우)
