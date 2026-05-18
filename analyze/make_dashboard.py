@@ -549,24 +549,19 @@ td.num{color:var(--t2);text-align:right}
         '  </div>'
         # 본문 컨텐츠
         '  <div class="trend-content">'
-        # 1. 연도별 발행량 (풀폭)
-        '    <div class="card" style="display:flex;flex-direction:column">'
-        '      <div class="card-hd"><h3>📊 연도별 논문 발행 현황</h3></div>'
-        '      <div class="kpi-strip" id="yr-kpis"></div>'
-        '      <div class="cw" style="flex:1;min-height:200px"><canvas id="cyr"></canvas></div>'
-        '    </div>'
-        # 1b. 급성장 / 감소 (하단 2열, rank-grid 클래스 제거 → 단일 열 리스트)
-        '    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">'
+        # 1. 연도별 차트 + 급성장 + 감소 — 3열 한 행
+        '    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px;align-items:stretch">'
+        '      <div class="card" style="display:flex;flex-direction:column">'
+        '        <div class="card-hd"><h3>📊 연도별 논문 발행 현황</h3></div>'
+        '        <div class="kpi-strip" id="yr-kpis"></div>'
+        '        <div class="cw" style="flex:1;min-height:180px"><canvas id="cyr"></canvas></div>'
+        '      </div>'
         '      <div class="card">'
-        '        <div class="card-hd" style="margin-bottom:10px">'
-        '          <h3>🚀 최근 5년 급성장 주제</h3>'
-        '        </div>'
+        '        <div class="card-hd" style="margin-bottom:10px"><h3>🚀 급성장 주제</h3></div>'
         '        <div id="rank-rise" style="display:flex;flex-direction:column;gap:6px"></div>'
         '      </div>'
         '      <div class="card">'
-        '        <div class="card-hd" style="margin-bottom:10px">'
-        '          <h3>📉 최근 5년 감소 주제</h3>'
-        '        </div>'
+        '        <div class="card-hd" style="margin-bottom:10px"><h3>📉 감소 주제</h3></div>'
         '        <div id="rank-fall" style="display:flex;flex-direction:column;gap:6px"></div>'
         '      </div>'
         '    </div>'
@@ -765,6 +760,7 @@ function buildSim(){
     return {...l,source:s,target:t,w:l.weight};
   }).filter(l=>ids.has(l.source)&&ids.has(l.target));
   document.getElementById('nst').textContent=`시뮬레이션 중… (${curNodes.length}명)`;
+  curNodes.forEach(n=>NM[n.id]=n);
   sim=d3.forceSimulation(curNodes)
     .force('link',d3.forceLink(curLinks).id(d=>d.id).distance(60))
     .force('charge',d3.forceManyBody().strength(d=>-80-d.paper_count*.4))
@@ -978,7 +974,7 @@ function openDrawer(n){
   document.getElementById('drawer').classList.add('open');
   renderLocalGraph(n.id);
 }
-let localMode='star';
+let localMode='mesh';
 function setLocalMode(mode){
   localMode=mode;
   document.querySelectorAll('#local-seg .seg-btn').forEach(b=>{
@@ -999,8 +995,8 @@ function renderLocalGraph(centerId){
     tog.innerHTML=
       '<span style="font-size:10px;color:var(--t3)">연결:</span>'+
       '<div class="seg" id="local-seg">'+
-      '<div class="seg-btn on" data-v="star" onclick="setLocalMode(\'star\')">직접</div>'+
-      '<div class="seg-btn" data-v="mesh" onclick="setLocalMode(\'mesh\')">전체</div>'+
+      '<div class="seg-btn" data-v="star" onclick="setLocalMode(\'star\')">직접</div>'+
+      '<div class="seg-btn on" data-v="mesh" onclick="setLocalMode(\'mesh\')">전체</div>'+
       '</div>';
     lgEl.insertBefore(tog,svgEl);
   }
